@@ -1,7 +1,7 @@
 "use client";
-import Image from "next/image";
+import Link from "next/link";
 import { Slider } from "../components/ui/slider";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 export default function Home() {
@@ -12,14 +12,11 @@ export default function Home() {
 
   const [emptyInputError, setEmptyInputError] = useState(false);
 
-  useEffect(() => {
-    setMessage("");
-    setTranslation("");
-  }, [translateTo]);
-
   function handleToggle() {
     const nextTranslate = translateTo === "normal" ? "genz" : "normal";
     setTranslateTo(nextTranslate);
+    setMessage("");
+    setTranslation("");
   }
 
   async function handleSubmit() {
@@ -42,6 +39,12 @@ export default function Home() {
   return (
     <div className="min-h-screen max-w-[40%] mx-auto pt-10 font-genz">
       <div className="">Genz Translator.</div>
+      <Link
+        href="/dictionary"
+        className="mt-2 inline-block text-sm underline underline-offset-4"
+      >
+        Open dictionary
+      </Link>
 
       <div className="mt-6">
         <div className="flex gap-2 items-baseline">
